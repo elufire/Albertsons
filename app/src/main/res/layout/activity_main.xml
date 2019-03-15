@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+    <variable
+        name = "mainViewModel"
+        type = "com.example.albertsons.MainViewModel"/>
+
+        <variable
+            name = "acro"
+            type = "com.example.albertsons.AbbrevResponse"/>
+    </data>
+
+<android.support.constraint.ConstraintLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    tools:context = ".MainActivity">
+
+    <EditText
+        android:id="@+id/etAcroInput"
+        android:layout_width = "100dp"
+        android:layout_height = "wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnGetSuggestions"
+        android:onTextChanged="@{(text, start, before, count) -> mainViewModel.onTextChanged(text)}"/>
+
+    <Button
+        android:id="@+id/btnGetSuggestions"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        app:layout_constraintStart_toEndOf="@id/etAcroInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="@{() -> mainViewModel.handleClick()}"/>
+
+    <TextView
+        android:id="@+id/tvShortForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/etAcroInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:text="@{acro.sf}"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvShortForm">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
+</android.support.constraint.ConstraintLayout>
+</layout>
