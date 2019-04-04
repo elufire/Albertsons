@@ -1,10 +1,14 @@
-package com.example.albertsons;
+package com.example.albertsons.viewmodels;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.databinding.BindingAdapter;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+
+import com.example.albertsons.datamodels.AbbrevResponse;
+import com.example.albertsons.activities.MainActivity;
+import com.example.albertsons.apiconnections.RemoteDataSource;
 
 import java.util.List;
 
@@ -17,11 +21,13 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainViewModel extends ViewModel {
 
-    @Inject
-            RemoteDataSource remoteDataSource;
-
     MutableLiveData<List<AbbrevResponse>> abbrevLiveData;
     String userAcro;
+
+    @Inject
+    public MainViewModel() {
+
+    }
 
     public void init(){
         abbrevLiveData = new MutableLiveData<>();

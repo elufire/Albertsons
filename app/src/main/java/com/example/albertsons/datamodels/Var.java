@@ -1,14 +1,13 @@
 
-package com.example.albertsons;
+package com.example.albertsons.datamodels;
 
-import java.util.List;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Lf implements Parcelable
+public class Var implements Parcelable
 {
 
     @SerializedName("lf")
@@ -20,53 +19,47 @@ public class Lf implements Parcelable
     @SerializedName("since")
     @Expose
     private Integer since;
-    @SerializedName("vars")
-    @Expose
-    private List<Var> vars = null;
-    public final static Creator<Lf> CREATOR = new Creator<Lf>() {
+    public final static Creator<Var> CREATOR = new Creator<Var>() {
 
 
         @SuppressWarnings({
             "unchecked"
         })
-        public Lf createFromParcel(Parcel in) {
-            return new Lf(in);
+        public Var createFromParcel(Parcel in) {
+            return new Var(in);
         }
 
-        public Lf[] newArray(int size) {
-            return (new Lf[size]);
+        public Var[] newArray(int size) {
+            return (new Var[size]);
         }
 
     }
     ;
 
-    protected Lf(Parcel in) {
+    protected Var(Parcel in) {
         this.lf = ((String) in.readValue((String.class.getClassLoader())));
         this.freq = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.since = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        in.readList(this.vars, (com.example.albertsons.Var.class.getClassLoader()));
     }
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Lf() {
+    public Var() {
     }
 
     /**
      * 
-     * @param vars
      * @param freq
      * @param lf
      * @param since
      */
-    public Lf(String lf, Integer freq, Integer since, List<Var> vars) {
+    public Var(String lf, Integer freq, Integer since) {
         super();
         this.lf = lf;
         this.freq = freq;
         this.since = since;
-        this.vars = vars;
     }
 
     public String getLf() {
@@ -93,19 +86,10 @@ public class Lf implements Parcelable
         this.since = since;
     }
 
-    public List<Var> getVars() {
-        return vars;
-    }
-
-    public void setVars(List<Var> vars) {
-        this.vars = vars;
-    }
-
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(lf);
         dest.writeValue(freq);
         dest.writeValue(since);
-        dest.writeList(vars);
     }
 
     public int describeContents() {

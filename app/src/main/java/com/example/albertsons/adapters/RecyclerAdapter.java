@@ -1,4 +1,4 @@
-package com.example.albertsons;
+package com.example.albertsons.adapters;
 
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
@@ -6,9 +6,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
+import com.example.albertsons.R;
 import com.example.albertsons.databinding.ItemBinding;
+import com.example.albertsons.datamodels.Lf;
+import com.example.albertsons.datamodels.Var;
 
 import java.util.ArrayList;
 

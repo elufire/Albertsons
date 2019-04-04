@@ -1,12 +1,17 @@
-package com.example.albertsons;
+package com.example.albertsons.apiconnections;
 
 
+import android.app.Application;
 import android.util.Log;
+
+import com.example.albertsons.datamodels.AbbrevResponse;
+import com.example.albertsons.di.RemoteDataSourceComponent;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
-import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -14,8 +19,14 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public class RemoteDataSource {
-
     public static final String BASE_URL = "http://www.nactem.ac.uk/software/acromine/dictionary.py/";
+//    @Inject
+//    Retrofit retrofit;
+
+//    RemoteDataSourceComponent remoteDataSourceComponent = DaggerRemoteDataSourceComponent
+//            .builder()
+//            .apiClass();
+
 
     public static Retrofit createRetrofit(){
         return new Retrofit.Builder()
@@ -43,7 +54,7 @@ public class RemoteDataSource {
 
 
 
-    interface RemoteService{
+    public interface RemoteService{
 
         @GET("sf")
         Observable<List<AbbrevResponse>> getAbbrevs(@Query("sf") String userAcro);

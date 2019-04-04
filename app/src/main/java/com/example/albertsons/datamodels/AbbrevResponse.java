@@ -1,10 +1,10 @@
 
-package com.example.albertsons;
+package com.example.albertsons.datamodels;
 
 import java.util.List;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -36,7 +36,7 @@ public class AbbrevResponse implements Parcelable
 
     protected AbbrevResponse(Parcel in) {
         this.sf = ((String) in.readValue((String.class.getClassLoader())));
-        in.readList(this.lfs, (com.example.albertsons.Lf.class.getClassLoader()));
+        in.readList(this.lfs, (Lf.class.getClassLoader()));
     }
 
     /**

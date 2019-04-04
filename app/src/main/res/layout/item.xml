@@ -3,7 +3,7 @@
     <data>
         <variable
             name = "lf"
-            type = "com.example.albertsons.Lf"/>
+            type = "com.example.albertsons.datamodels.Lf"/>
     </data>
 <LinearLayout
 
